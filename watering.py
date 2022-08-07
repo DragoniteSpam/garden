@@ -41,9 +41,9 @@ def sensor_setup(init_water_interval, init_water_time):
     for power in power_gpio:
         GPIO.setup(power, GPIO.OUT)
 
-    # LEDs: the little flashing lights you can enable on the sensors
+    # LEDs: the little flashing lights
     sensor_led = [
-        7, 5
+        7
     ]
     
     for led in sensor_led:
@@ -96,17 +96,19 @@ def sensor_wait():
     global water_interval, water_time
     global sensor_gpio, power_gpio, sensor_led, valve_gpio
     
+    # This will honestly probably be annoying so i'm commenting it out
     #Wait for interval period, flashing LED every 30 seconds
-    count_AA = 0
-    while count_AA < (water_interval * 2):
-        count_BB = 0
-        while count_BB < 5:
-            for led in sensor_led:
-                GPIO.output(led, True)
-            time.sleep(0.5)
-            for led in sensor_led:
-                GPIO.output(led, False)
-            time.sleep(0.5)
-            count_BB = count_BB + 1
-        time.sleep(25)
-        count_AA = count_AA + 1
+    #count_AA = 0
+    #while count_AA < (water_interval * 2):
+        #count_BB = 0
+        #while count_BB < 5:
+            #for led in sensor_led:
+                #GPIO.output(led, True)
+            #time.sleep(0.5)
+            #for led in sensor_led:
+                #GPIO.output(led, False)
+            #time.sleep(0.5)
+            #count_BB = count_BB + 1
+        #time.sleep(25)
+        #count_AA = count_AA + 1
+    time.sleep(water_interval * 60)
