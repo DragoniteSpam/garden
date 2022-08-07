@@ -5,7 +5,7 @@
 import time
 import RPi.GPIO as GPIO
 
-#Set up variables: interval in minutes, water in seconds
+# Set up variables: interval in minutes, water in seconds
 water_interval = 1
 water_time = 5
 
@@ -14,8 +14,9 @@ power_gpio = []
 sensor_led = []
 valve_gpio = []
 
-#Sensor A: GPIO 29, Relay 1: GPIO 37, Relay 2: GPIO 38, LED: 7
-#Sensor B: GPIO 3, Relay 1: GPIO 35, Relay 2: GPIO 36, LED: 5
+# Flashing LED: LED: GPIO 7
+# Sensor A: GPIO 29, Relay 1: GPIO 37, Relay 2: GPIO 38
+# Sensor B: GPIO 3, Relay 1: GPIO 35, Relay 2: GPIO 36
 GPIO.setmode(GPIO.BOARD)
 
 def sensor_setup(init_water_interval, init_water_time):
@@ -62,7 +63,7 @@ def sensor_update():
     global water_interval, water_time
     global sensor_gpio, power_gpio, sensor_led, valve_gpio
     
-    #Turn on the lights
+    # Turn on the lights
     for led in sensor_led:
         GPIO.output(led, True)
     
@@ -70,7 +71,7 @@ def sensor_update():
     for power in power_gpio:
         GPIO.output(power, True)
     
-    #Check if dry, and if so open valves for water(ing) time
+    # Check if dry, and if so open valves for water(ing) time
     for i in range(len(sensor_gpio)):
         if (GPIO.input(sensor_gpio[i])) == 1:
             GPIO.output(valve_gpio[i], True)
@@ -97,18 +98,18 @@ def sensor_wait():
     global sensor_gpio, power_gpio, sensor_led, valve_gpio
     
     # This will honestly probably be annoying so i'm commenting it out
-    #Wait for interval period, flashing LED every 30 seconds
-    #count_AA = 0
-    #while count_AA < (water_interval * 2):
-        #count_BB = 0
-        #while count_BB < 5:
-            #for led in sensor_led:
-                #GPIO.output(led, True)
-            #time.sleep(0.5)
-            #for led in sensor_led:
-                #GPIO.output(led, False)
-            #time.sleep(0.5)
-            #count_BB = count_BB + 1
-        #time.sleep(25)
-        #count_AA = count_AA + 1
+    # Wait for interval period, flashing LED every 30 seconds
+    # count_AA = 0
+    # while count_AA < (water_interval * 2):
+        # count_BB = 0
+        # while count_BB < 5:
+            # for led in sensor_led:
+                # GPIO.output(led, True)
+            # time.sleep(0.5)
+            # for led in sensor_led:
+                # GPIO.output(led, False)
+            # time.sleep(0.5)
+            # count_BB = count_BB + 1
+        # time.sleep(25)
+        # count_AA = count_AA + 1
     time.sleep(water_interval * 60)

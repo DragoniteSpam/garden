@@ -5,6 +5,8 @@
 from watering import *
 from timelapse import *
 
+GPIO.setwarnings(False)
+
 camera_setup()
 sensor_setup(15, 5)
 
