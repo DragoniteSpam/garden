@@ -7,7 +7,7 @@ from timelapse import *
 
 GPIO.setwarnings(False)
 
-camera_setup()
+camera_setup(False)
 sensor_setup(15, 5)
 
 try:

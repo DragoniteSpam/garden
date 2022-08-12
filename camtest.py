@@ -1,4 +1,4 @@
 from timelapse import *
 
-camera_setup()
+camera_setup(True)
 camera_update()
