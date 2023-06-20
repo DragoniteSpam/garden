@@ -4,7 +4,7 @@
 
 from camera import *
 
-camera_setup(show = False, interval = 1)
+camera_setup(show = False, interval = 5)
 
 try:
     while True:
