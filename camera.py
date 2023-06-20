@@ -32,13 +32,13 @@ def camera_update():
         # the preview if you want to here
         #if show_camera:
             # start preview
-            time.sleep(5)
+            # time.sleep(5)
 
         camera.capture_file('./timelapse/pic_%s.jpg' % str(datetime.datetime.now()).replace(":", "_"))
 
         # And remember to turn it off when you're done
         #if show_camera:
-            time.sleep(1)
+            # time.sleep(1)
             # stop preview
 
         frame_count = frame_count + 1
