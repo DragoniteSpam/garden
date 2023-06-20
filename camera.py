@@ -3,10 +3,11 @@ import time
 import datetime
 
 # Setup camera: max resolution, frame rate to support the same
-def camera_setup(show):
-    global camera, frame_count, camera_initialized, show_camera, capture_config
+def camera_setup(show, interval):
+    global camera, frame_count, camera_initialized, show_camera, capture_config, camera_interval
     try:
         show_camera = show
+        camera_interval = interval
         frame_count = 0
         camera = Picamera2()
 	# the max resolution for:
@@ -21,6 +22,10 @@ def camera_setup(show):
         print("Could not initialize the camera for the time lapse:")
         print(str(e))
         camera_initialized = False
+
+def camera_wait():
+    global camera_interval
+    time.sleep(camera_interval * 60)
 
 def camera_update():
     global camera, frame_count, camera_initialized, show_camera
