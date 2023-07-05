@@ -3,7 +3,7 @@
 # http://web.archive.org/web/20210822053232/https://www.explainingcomputers.com/sample_code/Watering.py
 
 from watering import *
-from timelapse import *
+from camera import *
 
 GPIO.setwarnings(False)
 
